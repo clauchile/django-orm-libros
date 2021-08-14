@@ -1,0 +1,67 @@
+libro= Book.objects.create(title ="C Sharp", desc = "Programar en C Sharp")
+In [15]: libro2= Book.objects.create(title ="Java", desc = "Java")
+In [16]: libro3= Book.objects.create(title ="Python", desc = "Programar en Python")
+In [17]: libro4= Book.objects.create(title ="PHP", desc = "Programar en PHP")
+In [18]: libro5= Book.objects.create(title ="Ruby", desc = "Programar en Ruby")
+: autor1 = Author.objects.create(first_name ="Jane", last_name="Austen")
+In [3]: autor2 = Author.objects.create(first_name ="Emily", last_name="Dickinson")
+In [4]: autor2 = Author.objects.create(first_name ="Fyodor", last_name="Dostoevsky")
+In [5]: autor4 = Author.objects.create(first_name ="William", last_name="Shakespeare")
+In [6]: autor5 = Author.objects.create(first_name ="Lau", last_name="Tzu")
+libro = Book.objects.get(id=2)
+In [9]: libro.title = "C #"
+In [10]:libro.save()
+In [12]: autor = Author.objects.get(id=4)
+In [13]: autor.first_name = "Bill"
+In [14]: autor.save()
+libro = Book.objects.get(id=2)
+autor =Author.objects.get(id=1)
+In [18]: autor.Book.add(libro)
+libro2 = Book.objects.get(id=3)
+libro2 = Book.objects.get(id=3)
+In [21]: autor.books.add(libro2)
+autor = Author.objects.get(id=2)
+libro1 = Book.objects.get(id=2)
+libro2 = Book.objects.get(id=3)
+libro3 = Book.objects.get(id=4)
+In [31]: autor.books.add(libro1)
+]: autor.books.add(libro2)
+In [30]: autor.books.add(libro3)
+
+autor3 = Author.objects.get(id=3)
+libros = Book.objects.exclude(id = 6)
+for l in libros:
+autor3.books.add(l)
+
+autor4 = Author.objects.get(id=4)
+In [44]: libros = Book.objects.all()
+In [45]: for li in libros:
+         autor4.books.add(li)
+
+libro = Book.objects.get(id=3)
+In [49]: print(libro.authors.all())
+<QuerySet [nombre: JaneAusten, nombre: EmilyDickinson, nombre: FyodorDostoevsky, nombre: BillShakespeare]         
+
+
+In [50]: libro = Book.objects.get(id=4)
+In [52]: autordelete= libro.authors.first()
+In [54]: autordelete.delete()
+Out[54]: (4, {'book_authors_app.Author_books': 3, 'book_authors_app.Author': 1})
+
+libro = Book.objects.get(id=3)
+In [61]: autor.Book.add(libro)
+autor.books.add(libro)
+
+
+Consulta: Encuentra todos los libros de los que el tercer autor es parte
+tercerAutor=Author.objects.get(id=3)
+In [64]: librosTercerAutor= tercerAutor.books.all()
+In [66]: print(librosTercerAutor)
+<QuerySet [title: C # desc:Programar en C Sharp, title: Java desc:Java, title: Python desc:Programar en Python, title: PHP desc:Programar en PHP]>
+
+
+Consulta: Encuentra todos los autores que contribuyeron al quinto libro.
+quintoLibro=Book.objects.get(id=6)
+autoresQuintoLibro = quintoLibro.authors.all()
+
+----------------------------------
